@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <h1>insert_emp</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="Eno">Employee Number:</label>
+            <input type="text" id="Eno" name="Eno" required><br><br>
+
+            <label for="Ename">Employee Name:</label>
+            <input type="text" id="Ename" name="Ename" required><br><br>
+
+            <label for="job">Job:</label>
+            <input type="text" id="job" name="job" required><br><br>
+
+            <label for="sal">Salary:</label>
+            <input type="text" id="sal" name="sal" required><br><br>
+
+            <label for="comm">Commission:</label>
+            <input type="text" id="comm" name="comm"><br><br>
+
+            <label for="Hiredate">Hire Date:</label>
+            <input type="date" id="Hiredate" name="Hiredate" required><br><br>
+
+            <label for="Dno">Depatment no</label>
+            <select name="Dno" id="Dno">
+                {% for TO in DTO %}
+                <option value="{{TO.Dno}}">{{TO.Dno}}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <label for="Mgr">Manager:</label>
+            <select name="Mgr" id="Mgr">
+                <option value="">None</option>
+                {% for employee in Mg %}
+                <option value="{{employee.Eno}}">{{employee.Ename}}</option>
+                {% endfor %}
+            </select><br><br>
+            
+            <button type="submit">Save</button>
+
+        </form>
+    </center>
+</body>
+</html>
